@@ -1,36 +1,26 @@
 import express from 'express'
-import { MongoClient } from 'mongodb'
+import dotenv from "dotenv";
+import mongoose from 'mongoose'
+
+
+
+
+dotenv.config();
 const app = express()
 
-const dbneam = 'school'
-const url = 'mongodb+srv://muhabbatali:myworldisstart$$$@cluster0.fepov5t.mongodb.net/'
-const client = new MongoClient(url)
-app.set("view engine", 'ejs')
+
+mongoose.connect(process.env.MONGO_URL)
+  .then(() => console.log("MongoDB Connected"))
+  .catch(err => console.log(err));
 
 
 
-app.get('/', async (req, res) => {
-
-  async function dnFunction() {
-    await client.connect()
-    const db = client.db(dbneam)
-    const collectionneam = db.collection('student')
-
-    await collectionneam.insertOne({
-      name: "Muhammad Ali"
-    })
-
-    const result = await collectionneam.find().toArray()
-    return result   // 👈 yahin se return
-  }
-
-  const result = await dnFunction() // 👈 yahan receive
-
-  res.render('students', { result })
+app.get('/', (req,res) => {
+  res.end("some deta")
 })
 
 
-app.listen(3200, () => {
-  console.log("http://localhost:3200")
-})          
-
+const port = 3200
+app.listen(port, () => {
+  console.log("http://localhost:"+port)
+})
