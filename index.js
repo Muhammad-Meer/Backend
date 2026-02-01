@@ -58,8 +58,25 @@
 
 // complete code commit
 
-import express from 'express'
- const app = express()
+// import express from 'express'
+import mongoose from 'mongoose'
+//  const app = express()
+
+
+ async function dbfunction() {
+  await mongoose.connect("mongodb+srv://muhabbatali:myworldisstart$$$@cluster0.fepov5t.mongodb.net/")
+  const schema = new mongoose.schema({
+    name: String,
+    age: Number
+  })
+
+ }
+
+ dbfunction()
+
+
+
+
 
 
 
@@ -67,16 +84,6 @@ import express from 'express'
  app.get('/', (req, res) => {
    res.end("papan")
  })
- app.get('/product', (req, res) => {
-   res.end("papan")
- })
- app.get('/servese', (req, res) => {
-   res.end("papan")
- })
- app.get('/deta', (req, res) => {
-   res.end("papan")
- })
-
 
   app.listen(3200, () => {
    console.log('http://localhost:3200')
