@@ -58,26 +58,63 @@
 
 // complete code commit
 
+// import express from 'express'
+// import mongoose from 'mongoose'
+// import studentModel from './model/studentModel.js'
+
+// const app = express();
+// app.use(express.json());
+
+// // MongoDB connection
+// mongoose.connect(
+//   "mongodb+srv://muhabbatali:myworldisstart$$$@cluster0.fepov5t.mongodb.net/mydatabase" // database name add kar diya
+// ).then(() => {
+//   console.log("connect ho gya")
+// }).catch(err => {
+//   console.log("MongoDB connection error:", err)
+// })
+
+// // GET route
+// app.get('/', async (req, res) => {
+//   try {
+//     const students = await studentModel.find()
+//     console.log(students)
+//     res.send(students) // res.end("p") ki jagah sahi response bheja
+//   } catch (err) {
+//     res.status(500).send({ error: "Database error" })
+//   }
+// })
+
+
+// app.post('/save', async (req,res) => {
+    
+//     const studentmody = await studentModel.create(req.body)
+//     {
+//       data: studentmody
+//     }
+// })
+
+
+
+
+// app.listen(3200, () => {
+//   console.log('http://localhost:3200')
+// })
 
 import express from 'express'
-import mongoose from 'mongoose'
-import studentModel from './model/studentModel.js'
+import cors from 'cors'
 
 const app = express()
 
-mongoose.connect(
-  "mongodb+srv://muhabbatali:myworldisstart$$$@cluster0.fepov5t.mongodb.net/"
-).then(() => {
-  console.log("conect ho gya")
+app.use(cors())   // ✅ yahan brackets zaroori hain
+
+app.get('/', (req, res) => {
+  res.json({
+    name: "kaop"
+  })
 })
 
-app.get('/', async (req, res) => {
-  const students = await studentModel.find()
-  console.log(students)
-  res.end()
+const port = 3200
+app.listen(port, () => {
+  console.log("http://localhost:3200")
 })
-
-app.listen(3200, () => {
-  console.log('http://localhost:3200')
-})
-
