@@ -102,15 +102,36 @@
 // })
 
 import express from 'express'
-import cors from 'cors'
+import { MongoClient } from 'mongodb'
 
 const app = express()
 
-app.use(cors())   // ✅ yahan brackets zaroori hain
 
-app.get('/', (req, res) => {
-  res.json({
-    name: "kaop"
+const url = "mongodb+srv://muhabbatali:myworldisstart$$$@cluster0.fepov5t.mongodb.net/?appName=Cluster0"
+const database = "test"
+const  collection = "students"
+const client = new MongoClient(url)
+client.connect().then(() => {
+  console.log("conect")
+}).catch(() => {
+  console.log("erorr")
+})
+
+
+app.get('/', (req,res) => {
+  res.send(`
+    <form action="/uplod" method="post">
+    <input type="file" name="myfile"/>
+    <input type="file" name="myfile"/>
+    <button>file</button>
+    </form>
+    `)
+})
+
+app.get('/uplod', (req,res) => {
+  res.send({
+    mesaage: "file uplod",
+    info: null
   })
 })
 
