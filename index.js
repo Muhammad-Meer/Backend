@@ -1,14 +1,12 @@
 import express from "express";
+import userrouter from './routes/userRouter.js'
 
 const app = express();
 app.use(express.urlencoded({extended: true}));
 
-app.get("/", (req, res) => {
-  res.send(`<h1> welcome to airbnb</h1>
-    <a href="/add-home">add home</a>
-    `);
-});
 
+
+app.use(userrouter)
 app.get("/add-home", (req, res) => {
   res.send(`<h1>rigester your  home here  </h1>
       <form action="/add-home" method="post">
