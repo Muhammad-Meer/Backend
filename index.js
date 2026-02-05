@@ -12,6 +12,10 @@ app.use(express.urlencoded({extended: true}));
 app.use(userrouter)
 app.use(hostrouter)
 
+app.use((req ,res ,next) => {
+  res.send("e")
+})
+
 
 const port = 3200;
 app.listen(port, () => {
