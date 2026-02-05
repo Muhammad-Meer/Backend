@@ -1,13 +1,12 @@
+const path = require('path')
 import express from 'express'
+
 
 const userrouter = express.Router()
 
 userrouter.get("/", (req, res) => {
-  res.send(`
-    <h1>welcome to airbnb</h1>
-    <a href="/host/add-home">add home</a>
-`)
+  res.sendFile(path.join(__dirname, '../','views', 'home.html'))
 })
 
 export default userrouter
-
+ 
