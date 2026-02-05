@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.urlencoded({extended: true}));
 app.use(userrouter)
-app.use(hostrouter)
+app.use("/host", hostrouter)
 
 app.use((req ,res ,next) => {
   res.send("e")
