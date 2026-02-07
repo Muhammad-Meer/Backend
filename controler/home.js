@@ -1,3 +1,5 @@
-exports.getaddhome(req , res , next) {
-  res.rendeer('addhome', {pagetitle: 'add home to airbnb'})
+exports.getAddHome = (req, res, next) => {
+  res.render('addhome', {
+    pageTitle: 'Add Home to Airbnb'
+  })
 }

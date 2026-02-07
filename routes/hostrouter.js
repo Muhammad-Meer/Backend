@@ -1,15 +1,6 @@
-const  express  = require('express')
-const hostrouter = express.Router()
+const path = require('path')
 
-hostrouter.get("/add-home", (req, res) => {
- 
-})
+const express = require('express')
+const hostrouter = express.Router() 
 
-hostrouter.post("/add-home", (req, res) => {
-  console.log(req.body)
-  res.send(`
-
-  `)
-})
-
-export default hostrouter
+const rootdir = require("/")

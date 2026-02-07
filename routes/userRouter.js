@@ -1,12 +1,10 @@
-const path = require('path')
-import express from 'express'
+const path = require('path');
+const express = require('express');
 
-
-const userrouter = express.Router()
+const userrouter = express.Router();
 
 userrouter.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, '../','views', 'home.html'))
-})
+  res.sendFile(path.join(__dirname, '../', 'views', 'home.html'));
+});
 
-export default userrouter
- 
+module.exports = userrouter;
